@@ -19,7 +19,7 @@ See the folder in this repository named `cli` for more info.
 10:30 am - 11:00 am Q & A / Break
 ---------------------------------
 
-See the folder in this repository named `notes` for more info.
+See the markdown file in this repository named `notes.md` for more info.
 
 11:00 am - 12:00 pm Introduction to the Slicer
 ----------------------------------------------
@@ -29,14 +29,9 @@ See the folder in this repository named `uplynk_slicer` for more info.
 12:00 pm - 1:00 pm Q & A / Lunch
 --------------------------------
 
-See the folder in this repository named `notes` for more info.
+See the markdown file in this repository named `notes.md` for more info.
 
-1:00 pm - 1:30 pm Scripts
--------------------------
-
-See the folder in this repository named `scripts` for more info.
-
-1:30 pm - 2:30 pm Using the Slicer
+1:00 pm - 2:30 pm Using the Slicer
 ----------------------------------
 
 See the folder in this repository named `uplynk_slicer` for more info.
@@ -44,7 +39,7 @@ See the folder in this repository named `uplynk_slicer` for more info.
 2:30 pm - 3:00 pm Q & A / Break
 -------------------------------
 
-See the folder in this repository named `notes` for more info.
+See the markdown file in this repository named `notes.md` for more info.
 
 3:00 pm - 6:00 pm Liveslicer APIs
 ---------------------------------
@@ -54,7 +49,7 @@ See the folder in this repository named `uplynk_slicer` for more info.
 6:00 pm - 6:30 pm Q & A
 -----------------------
 
-See the folder in this repository named `notes` for more info.
+See the markdown file in this repository named `notes.md` for more info.
 
 
 

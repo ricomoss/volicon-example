@@ -38,3 +38,6 @@ Download
 
         ➜  example_slicer git:(master) ✗ ./liveslicer -config /path/to/your/config/file.config
 
+Note: The `liveslicer` needs to run uninterrupted to function.  All API calls must be made from a different process.
+
+12. The channel will begin streaming your content.  Open the URL for your channel, which can be found in `Editor -> Test Players` choose the "blue" link.
