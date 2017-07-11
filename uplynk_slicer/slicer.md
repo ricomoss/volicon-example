@@ -1,154 +1,40 @@
-Introduction to CLI
-===================
+Uplynk Slicer
+=============
 
-The examples below will cover a wide range of common CLI tools.  Use this as a reference, but be sure to go through these examples yourself.  Practice, practice, practice.  
+The Uplynk slicer is a tool that is used to consume video media and import the information into the Uplynk system.  This allows viewers to consume the media via the Uplynk architecture.  
 
-Bash/Zsh Commands
-=================
+Download
+========
 
-**Use "Tab Complete" As Often As Possible!!**
+1. Create an Uplynk CMS user: https://cms.uplynk.com
 
-**man** - Manual page.  Use this to get more information about any CLI tool.  *Note*: Some tools will use `-h` or `--help` instead.
+2. Download the Linux slicer
 
-**ctrl+u** - Clear the current command.
+        wget http://storage.uplynk.com/software/uplynk_slicer_linux_64-17061500-master.tbz2
 
-**ctrl+l** - Clear the screen. (Equivalent to **clear**)
+5. Extract the tarball 
 
-**echo** - Display a line of text.
+        tar -xjvf <slicer_tarball>.tbz2
 
-    rico@verbal ~ $ echo "Look at me!"
-    Look at me!
+6. Rename the extracted directory to `example_slicer` (for simplicity).
+ 
+        mv <extracted_slicer_directory>/ example_slicer
 
-**pwd** - Print Working Directory (where you are now)
+7. Note a few of the files and a directory.
 
-    rico@verbal ~/Projects $ pwd
-    /home/rico/Projects
+        drwxrwxr-x 2 rico rico     4096 Jun 15 14:01 plugins/
+        -rwxrwxr-x 1 rico rico  2126927 Jun 15 14:01 liveslicer*
+        -rwxrwxr-x 1 rico rico  1817838 Jun 15 14:01 slicer*
 
-**cd** - Change Directory
+8. You can view the help menu for each with `-h`
 
-    rico@verbal ~/Projects $ cd
-    rico@verbal ~ $
+        ➜  example_slicer git:(master) ✗ ./slicer -h
 
-    rico@verbal ~ $ cd Projects/
-    rico@verbal ~/Projects $ 
+9. Add a channel in the CMS with `Slicer ID: <your_name>_live_slicer`.  You can choose any value you want for the `Channel Name`.
 
-**ls** - List directory structure
+10. Open the `example.conf` file and update it to include your info.
 
-    rico@verbal ~ $ cd Projects/
-    rico@verbal ~/Projects $ 
-    rico@verbal ~/Projects $ ls
-    volicon-example
+11. Run the `liveslicer` and point it to your config file.
 
-**ls -a** - List directory structure of all files (including "hidden" files/directories) 
+        ➜  example_slicer git:(master) ✗ ./liveslicer -config /path/to/your/config/file.config
 
-    rico@verbal ~/Projects $ ls -a
-    .  ..  volicon-example
-
-**ls -l** - List directory structure (includes more info about the files/directories called "long listing format") 
-
-    rico@verbal ~/Projects $ ls -a
-    total 4
-    drwxrwxr-x 2 rico rico 4096 Jul 11 08:22 volicon-example
-
-**ls -al** - List directory structure of all files (to see more options try `man ls`) 
-
-    rico@verbal ~/Projects $ ls -al
-    total 12
-    drwxrwxr-x  3 rico rico 4096 Jul 11 08:22 .
-    drwxrwxr-x 18 rico rico 4096 Jul 11 08:14 ..
-    drwxrwxr-x  2 rico rico 4096 Jul 11 08:22 volicon-example
-
-**mkdir** - Make a directory
-
-    rico@verbal ~/Projects $ mkdir sandbox
-    rico@verbal ~/Projects $ ls
-    sandbox       volicon-example
-
-**touch** - Change file timestamps, change the access and/or modification times of the specified files.  Can be used as a shortcut to create an empty file.
-
-    rico@verbal ~/Projects/sandbox $ ls
-    rico@verbal ~/Projects/sandbox $ 
-    
-    rico@verbal ~/Projects/sandbox $ touch example_file.txt
-    rico@verbal ~/Projects/sandbox $ ls
-    example_file.txt
-    
-**rm** - Remove a file
-
-    rico@verbal ~/Projects/sandbox $ ls
-    example_file.txt
-    rico@verbal ~/Projects/sandbox $ rm example_file.txt 
-    rico@verbal ~/Projects/sandbox $ ls
-    rico@verbal ~/Projects/sandbox $ 
-    
-**rmdir** - Safely removes a directory.  If the directory is not empty, it will warn and abort.
-
-    rico@verbal ~/Projects/sandbox $ mkdir test
-    rico@verbal ~/Projects/sandbox $ ls
-    test
-    rico@verbal ~/Projects/sandbox $ cd test
-    rico@verbal ~/Projects/sandbox/test $ touch test.txt
-    rico@verbal ~/Projects/sandbox/test $ cd ..
-    rico@verbal ~/Projects/sandbox $ rmdir test
-    rmdir: failed to remove 'test': Directory not empty
-    rico@verbal ~/Projects/sandbox $ cd test
-    rico@verbal ~/Projects/sandbox/test $ rm test.txt 
-    rico@verbal ~/Projects/sandbox/test $ cd ..
-    rico@verbal ~/Projects/sandbox $ rmdir test
-    rico@verbal ~/Projects/sandbox $ ls
-    rico@verbal ~/Projects/sandbox $ 
-
-**>** - Redirect Output
-
-    rico@verbal ~/Projects/sandbox/test $ whoami > test.txt 
-    rico@verbal ~/Projects/sandbox/test $ cat test.txt 
-    rico
-
-**>>** - Redirect Output (concatenated)
-
-    rico@verbal ~/Projects/sandbox/test $ whoami >> test.txt 
-    rico@verbal ~/Projects/sandbox/test $ cat test.txt 
-    rico
-    rico
-    
-**cat** - Concatenates files and prints to STDOUT (standard out)
-
-**less** - A file viewer (no editing)
-
-**history** - A historical view of the commands used during this session.
-
-**ctrl+r** - Reverse search for commands used in the history.
-
-**tail** - Print the end of a file.
-
-    rico@verbal ~/Projects/sandbox/test $ tail test.txt 
-    rico
-    rico
-
-**tail -f** - Print the end of a file, forced open.  This is used for files that are repeatedly getting information added to it.
-
-**grep** - Search the content of files for `regex` patterns.
-
-    rico@verbal ~/Projects/sandbox/test $ cat test.txt 
-    rico
-    rico
-    This is a test
-    This is a test too
-    rico@verbal ~/Projects/sandbox/test $ grep "rico" test.txt 
-    rico
-    rico
-    
-**find** - Find files on the system.
-
-    rico@verbal ~/ $ find ~/Projects -name "test.txt"
-    /home/rico/Projects/sandbox/test/test.txt
-
-**ps** - A snapshot of the current processes (Too long to show.)
-
-**|** - Pipe.  Used to pipe STDOUT into another CLI tool.
-
-    rico@verbal ~/ $ ps -aux | grep "aux"
-    rico     19837  0.0  0.0  39412  3352 pts/0    R+   10:33   0:00 ps -aux
-    rico     19838  0.0  0.0  16272   948 pts/0    S+   10:33   0:00 grep --color=auto aux
-
-**top** - Sustained display of processes.  (Too long to show.)
